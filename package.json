@@ -1,6 +1,6 @@
 {
   "name": "@danieluhm2004/nestjs-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "repository": "https://github.com/danieluhm2004/nestjs-tools.git",
   "author": "danieluhm2004 <iam@dan.al>",
@@ -9,6 +9,7 @@
     "@nestjs/common": "^10.0.4",
     "@nestjs/core": "^10.0.4",
     "@nestjs/platform-express": "^10.0.4",
+    "@nestjs/schedule": "^3.0.3",
     "@nestjs/swagger": "^7.0.12",
     "@nestjs/typeorm": "^10.0.0",
     "class-transformer": "^0.5.1",

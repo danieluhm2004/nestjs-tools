@@ -1,17 +1,18 @@
 import { INestApplication, VersioningType } from '@nestjs/common';
 import { NTSetupSwaggerOptions, setupNTSwagger } from './swagger';
 
-import { NTClassSerializerInterceptor } from './interceptors/class-serializer.interceptor';
-import { NTNotFoundFilter } from './filters/notfound.filter';
-import { NTWrapperInterceptor } from './interceptors/wrapper.interceptor';
-import { NTvalidationPipe } from './pipes/validationPipe';
 import { Reflector } from '@nestjs/core';
 import compression from 'compression';
 import helmet from 'helmet';
+import { NTNotFoundFilter } from './filters/notfound.filter';
+import { NTClassSerializerInterceptor } from './interceptors/class-serializer.interceptor';
+import { NTWrapperInterceptor } from './interceptors/wrapper.interceptor';
+import { NTvalidationPipe } from './pipes/validationPipe';
 
 export * from '@nestjs/common';
 export * from '@nestjs/core';
 export * from '@nestjs/platform-express';
+export * from '@nestjs/schedule';
 export * from '@nestjs/swagger';
 export * from '@nestjs/typeorm';
 export * from 'nestjs-swagger-dto';
