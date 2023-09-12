@@ -1,5 +1,5 @@
 import { ValidationPipe } from '@nestjs/common';
-import { globalOpcode } from '../opcode';
+import { globalOpcode } from '../tools/opcode';
 
 export const NTvalidationPipe = () =>
   new ValidationPipe({

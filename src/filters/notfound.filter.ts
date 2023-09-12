@@ -5,7 +5,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
-import { globalOpcode } from '../opcode';
+import { globalOpcode } from '../tools/opcode';
 
 @Catch(NotFoundException)
 export class NTNotFoundFilter implements ExceptionFilter {

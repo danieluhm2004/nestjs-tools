@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Observable, catchError, map, throwError } from 'rxjs';
 
-import { globalOpcode } from '../opcode';
+import { globalOpcode } from '../tools/opcode';
 
 @Injectable()
 export class NTWrapperInterceptor implements NestInterceptor {

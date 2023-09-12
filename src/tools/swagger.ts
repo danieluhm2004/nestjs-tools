@@ -1,9 +1,9 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { INestApplication } from '@nestjs/common';
-import { NTAppService } from './app/app.service';
+import { NTAppService } from '../app/app.service';
+import { ResClusterInfoDto } from '../dto/clusterInfo.dto';
 import { OpcodeItem } from './opcode';
-import { ResClusterInfoDto } from './dto/clusterInfo.dto';
 
 export interface NTSetupSwaggerOptions {
   opcode?: { [key: string]: OpcodeItem };
