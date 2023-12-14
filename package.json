@@ -6,7 +6,7 @@
   "author": "danieluhm2004 <iam@dan.al>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "rimraf dist && tsc"
   },
   "dependencies": {
     "@nestjs/common": "^10.2.10",
