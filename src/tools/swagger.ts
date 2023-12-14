@@ -1,12 +1,14 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { INestApplication } from '@nestjs/common';
+import expressBasicAuth from 'express-basic-auth';
 import { NTAppService } from '../app/app.service';
 import { ResClusterInfoDto } from '../dto/clusterInfo.dto';
 import { OpcodeItem } from './opcode';
 
 export interface NTSetupSwaggerOptions {
   opcode?: { [key: string]: OpcodeItem };
+  auth?: { username: string; password: string };
   tags?: {
     name: string;
     description: string;
@@ -37,7 +39,20 @@ export async function setupNTSwagger(
   }
 
   const document = SwaggerModule.createDocument(app, config.build());
-  SwaggerModule.setup('docs', app, document);
+  app.use('/docs*', getAuthMiddleware(options));
+  app.use('/docs/swagger.json', (_, res) => res.send(document));
+  SwaggerModule.setup('docs', app, document, {
+    swaggerOptions: { persistAuthorization: true },
+  });
+}
+
+function getAuthMiddleware(options?: NTSetupSwaggerOptions) {
+  const username = options?.auth?.username || 'admin';
+  const password = options?.auth?.password || 'admin';
+  return expressBasicAuth({
+    challenge: true,
+    users: { [username]: password },
+  });
 }
 
 function getDescription(
