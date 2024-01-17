@@ -57,7 +57,7 @@ export class NTClassSerializerInterceptor implements NestInterceptor {
     const req = context.switchToHttp().getRequest();
     options.groups = [
       ...(options.groups || []),
-      _.get(req, 'properties.session.user.isAdmin') === true
+      _.get(req, 'properties.current.session.user.isAdmin') === true
         ? 'role:admin'
         : 'role:user',
     ];

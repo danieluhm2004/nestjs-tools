@@ -1,6 +1,6 @@
 {
   "name": "@danieluhm2004/nestjs-tools",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "repository": "https://github.com/danieluhm2004/nestjs-tools.git",
   "author": "danieluhm2004 <iam@dan.al>",
@@ -31,6 +31,7 @@
     "@types/helmet": "^4.0.0",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.4",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   }
 }
