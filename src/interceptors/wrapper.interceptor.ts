@@ -19,7 +19,7 @@ export class NTWrapperInterceptor implements NestInterceptor {
     const errorPipe = catchError((err) => {
       if (err.name !== 'HttpException') {
         this.logger.error(err.message, err.stack);
-        return throwError(() => globalOpcode.InvalidError());
+        return throwError(() => globalOpcode.InvalidError({}, err));
       }
 
       return throwError(() => err);

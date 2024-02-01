@@ -6,7 +6,10 @@ export type OpcodeNames =
   | 'ValidateFailed'
   | 'NotFound';
 
-export type OpcodeItem = (details?: { [key: string]: any }) => HttpException;
+export type OpcodeItem = (
+  details?: { [key: string]: any },
+  actualError?: Error,
+) => HttpException & { actualError?: Error };
 export const globalOpcode: { [key in OpcodeNames]: OpcodeItem } = {
   Success: $(0, HttpStatus.OK, '요청에 성공하였습니다.'),
   InvalidError: $(
@@ -31,6 +34,13 @@ export function $(
   statusCode: number,
   message?: string,
 ): OpcodeItem {
-  return (details: { [key: string]: any } = {}) =>
-    new HttpException({ opcode, message, ...details }, statusCode);
+  return (details: { [key: string]: any } = {}, error?: Error) => {
+    const err: any = new HttpException(
+      { opcode, message, ...details },
+      statusCode,
+    );
+
+    err.actualError = error;
+    return err;
+  };
 }
