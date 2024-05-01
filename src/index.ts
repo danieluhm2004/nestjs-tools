@@ -17,6 +17,7 @@ export * from '@nestjs/platform-express';
 export * from '@nestjs/schedule';
 export * from '@nestjs/swagger';
 export * from '@nestjs/typeorm';
+export { Transform } from 'class-transformer';
 export * from 'nestjs-swagger-dto';
 
 export * from './app';
