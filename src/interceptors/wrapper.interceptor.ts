@@ -14,7 +14,13 @@ export class NTWrapperInterceptor implements NestInterceptor {
   private readonly logger = new Logger(NTWrapperInterceptor.name);
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const pipe = map((data: any) => ({ opcode: 0, ...data }));
+    const pipe = map((data: any) => {
+      const isArray = Array.isArray(data);
+      const isObject = typeof data === 'object';
+      if (isArray || !isObject) return data;
+      return { opcode: 0, ...data };
+    });
+
     context.switchToHttp().getResponse().status(200);
     const errorPipe = catchError((err) => {
       if (err.name !== 'HttpException') {
